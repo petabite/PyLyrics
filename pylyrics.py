@@ -8,17 +8,16 @@ GetWindowText = ctypes.windll.user32.GetWindowTextW
 GetWindowTextLength = ctypes.windll.user32.GetWindowTextLengthW
 IsWindowVisible = ctypes.windll.user32.IsWindowVisible
 
-titles = []
-def foreach_window(hwnd, lParam):
-    if IsWindowVisible(hwnd):
-        length = GetWindowTextLength(hwnd)
-        buff = ctypes.create_unicode_buffer(length + 1)
-        GetWindowText(hwnd, buff, length + 1)
-        titles.append(buff.value)
-    return True
-EnumWindows(EnumWindowsProc(foreach_window), 0)
-#code above not my code
 def get_song_info():
+    titles = []
+    def foreach_window(hwnd, lParam):
+        if IsWindowVisible(hwnd):
+            length = GetWindowTextLength(hwnd)
+            buff = ctypes.create_unicode_buffer(length + 1)
+            GetWindowText(hwnd, buff, length + 1)
+            titles.append(buff.value)
+        return True
+    EnumWindows(EnumWindowsProc(foreach_window), 0)
     for item in titles:
         if '-' in item and 'Google' not in item and 'python' not in item and 'cmd' not in item:
             return item
@@ -26,6 +25,7 @@ def get_song_info():
 def create_search_query(artist, song):
     new_artist_string = artist.replace(' ', '+')
     new_song_string = song.replace(' ', '+')
+    new_song_string = new_song_string.replace('&', 'and')
     return new_song_string + '%20' + new_artist_string
 
 def create_lyrics_url(search_query):

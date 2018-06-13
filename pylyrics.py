@@ -18,14 +18,20 @@ def get_song_info():
             titles.append(buff.value)
         return True
     EnumWindows(EnumWindowsProc(foreach_window), 0)
+    #code above not my code
     for item in titles:
-        if '-' in item and 'Google' not in item and 'python' not in item and 'cmd' not in item:
+        if '-' in item and 'Google' not in item and 'python' not in item and 'Calculator' not in item:
             return item
 
 def create_search_query(artist, song):
     new_artist_string = artist.replace(' ', '+')
     new_song_string = song.replace(' ', '+')
     new_song_string = new_song_string.replace('&', 'and')
+    if '(' in new_song_string:
+        start = new_song_string.find('(')
+        end = new_song_string.find(')')
+        to_be_replaced = new_song_string[start:end]
+        new_song_string = new_song_string.replace(to_be_replaced, '')
     return new_song_string + '%20' + new_artist_string
 
 def create_lyrics_url(search_query):

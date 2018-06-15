@@ -7,7 +7,7 @@ root.title('PyLyrics')
 
 default_font = font.nametofont("TkDefaultFont")
 default_font.configure(size=12, family = 'courier')
-
+# TODO: tkinter, use pylyrics logo 
 
 def refresh_window():
     pylyricsframe.destroy()

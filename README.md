@@ -1,6 +1,8 @@
 # PyLyrics
 #### gets lyrics for song playing in spotify
 
+
+
 #### how to use:
 ---
 
@@ -21,3 +23,5 @@ run `python pylyricsgui.py` for GUI mode
 5. send get request to lyrics url
 6. scrape lyrics from html
 7. display the lyrics!
+
+Icon made by [FreePik](http://www.freepik.com/) from www.flaticon.com. Orginal icon was modified for this project

@@ -37,8 +37,8 @@ def create_window():
         lyrics_text.tag_add("center", 1.0, "end")
         lyrics_text.config(state=tk.DISABLED)
         lyrics_text.pack()
-    except Exception as e:
-        print(e)
+    except:
+        # print(e)
         searching_label.config(text = 'A song isn\'t playing right now')
 
 #create frame and labels
